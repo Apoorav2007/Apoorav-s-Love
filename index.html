@@ -1,110 +1,232 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>For My Anshu Baby ❤️</title>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love</title>
+<style>
     body {
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-      color: #333;
-      text-align: center;
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(to right, #ffecd2, #fcb69f);
+        overflow-x: hidden;
+        color: #333;
+        scroll-behavior: smooth;
     }
-    header {
-      padding: 40px 20px;
-      background-color: rgba(255,255,255,0.7);
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        position: relative;
+        z-index: 2;
     }
-    header h1 {
-      font-size: 2.5em;
-      margin: 0;
-      color: #e91e63;
+    h1 {
+        text-align: center;
+        color: #ff5c5c;
+        margin-bottom: 20px;
+        font-size: 2.5em;
     }
-    header p {
-      font-size: 1.2em;
-      color: #444;
+    p {
+        margin-bottom: 20px;
+        text-align: justify;
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeInUp 1s forwards;
     }
-    section {
-      padding: 40px 20px;
-      margin: 20px;
-      background-color: rgba(255, 255, 255, 0.8);
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    .highlight {
+        color: #ff5c5c;
+        font-weight: bold;
     }
-    h2 {
-      color: #d81b60;
+    .footer {
+        text-align: center;
+        margin-top: 40px;
+        font-style: italic;
+        color: #555;
     }
-    ul {
-      list-style: none;
-      padding: 0;
+    @keyframes fadeInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
-    ul li {
-      padding: 10px;
-      font-size: 1.1em;
+    .hearts {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 1;
+        overflow: hidden;
     }
-    .coupon {
-      display: inline-block;
-      background: #f8bbd0;
-      margin: 10px;
-      padding: 15px 25px;
-      border-radius: 8px;
-      font-weight: bold;
-      color: #333;
-      box-shadow: 2px 2px 6px rgba(0,0,0,0.2);
+    .heart {
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: red;
+        transform: rotate(-45deg);
+        animation: float 7s linear infinite;
     }
-    footer {
-      padding: 30px 20px;
-      background-color: rgba(255,255,255,0.7);
-      font-size: 1.1em;
+    .heart:before,
+    .heart:after {
+        content: "";
+        position: absolute;
+        width: 20px;
+        height: 20px;
+        background: red;
+        border-radius: 50%;
     }
-  </style>
+    .heart:before { top: -10px; left: 0; }
+    .heart:after { top: 0; left: 10px; }
+    @keyframes float {
+        0% { transform: translateY(100vh) scale(1) rotate(-45deg); opacity: 1; }
+        100% { transform: translateY(-100vh) scale(0.5) rotate(-45deg); opacity: 0; }
+    }
+    .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        background: #fff;
+        padding: 30px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        text-align: center;
+        z-index: 3;
+        width: 80%;
+        max-width: 400px;
+        transition: transform 0.5s ease-in-out;
+    }
+    .popup.show {
+        transform: translate(-50%, -50%) scale(1);
+    }
+    .popup h2 {
+        color: #ff5c5c;
+        margin-bottom: 20px;
+    }
+    .popup button {
+        padding: 10px 20px;
+        border: none;
+        background: #ff5c5c;
+        color: #fff;
+        font-size: 1em;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+</style>
 </head>
 <body>
-  <header>
-    <h1>For My Anshu Baby ❤️</h1>
-    <p>A little online corner made just for you, Anshlika</p>
-  </header>
 
-  <section>
-    <h2>Our Story</h2>
-    <ul>
-      <li>The day we first talked, I didn’t know life would feel this special.</li>
-      <li>Our first long call felt like seconds, and I never get tired of your voice.</li>
-      <li>Every silly joke we share makes the distance feel smaller.</li>
-    </ul>
-  </section>
+<div class="hearts"></div>
 
-  <section>
-    <h2>Love Coupons</h2>
-    <div class="coupon">One Big Hug 🤗</div>
-    <div class="coupon">One Day of Me Cooking for You 🍳</div>
-    <div class="coupon">Unlimited Random Memes 😂</div>
-    <div class="coupon">A Playlist Made Only for You 🎶</div>
-  </section>
+<div class="popup" id="firstMessage">
+    <h2>Remember this?</h2>
+    <p>My very first message to you, sent on the 4th of August last year. It feels like yesterday, yet here we are, more than a year together, and I feel so blessed.</p>
+    <button onclick="closePopup()">❤️ Close ❤️</button>
+</div>
 
-  <section>
-    <h2>Playlist for You</h2>
-    <p>Here are some songs that remind me of you, my Anshu baby:</p>
-    <ul>
-      <li><a href="https://www.youtube.com/watch?v=RBumgq5yVrA" target="_blank">Say You Won’t Let Go – James Arthur</a></li>
-      <li><a href="https://www.youtube.com/watch?v=450p7goxZqg" target="_blank">Perfect – Ed Sheeran</a></li>
-      <li><a href="https://www.youtube.com/watch?v=lp-EO5I60KA" target="_blank">All of Me – John Legend</a></li>
-    </ul>
-  </section>
+<div class="container" id="storyContainer">
+<h1>To My Dearest Love</h1>
 
-  <section>
-    <h2>Hidden Message</h2>
-    <p>If you are reading this, it means you are the most patient person alive.  
-    Here’s the truth: I love you more than words can ever explain.  
-    No distance can ever change that. ❤️</p>
-  </section>
+<p>My love, today I sit down with nothing but my laptop because my phone is broken, and I feel compelled to pour my heart out to you in words that are more than just texts or calls. Our journey began on the 7th of July, a date that has now become one of the most significant days in my life...</p>
 
-  <footer>
-    <p>This page is not fancy, but it’s made with love.  
-    You can open it whenever you miss me, Anshu baby.  
-    Love, Apoorav Guleria</p>
-  </footer>
+<p>I remember vividly the first time I mustered the courage to send you a message on the 4th of August last year. The anticipation, the nervous excitement, and the endless thoughts running through my mind were almost too much to handle. I had no idea that a simple “is  everything fine ?" could be the start of something so profound, so life-changing...</p>
+
+<p>Every day with you feels like a dream I never want to wake up from. I feel incredibly lucky to have you in my life. You have brought so much joy, warmth, and peace to my heart that words often feel insufficient...</p>
+
+<p>I know life is never perfect, and I am deeply sorry for the inconvenience caused by my phone being broken. But I hope this message, written from my heart, reaches you in a way that texts or calls cannot...</p>
+
+<p>Over the past year, we have built countless memories together. From our first conversation, the shy laughs, the shared stories, the tiny misunderstandings that only brought us closer, to the endless support and care we have given each other...</p>
+
+<p>Sometimes I think about how our story began so naturally, almost like it was written in the stars. The way our paths crossed, the way our hearts connected, and the way our love grew stronger each day it all feels magical, yet perfectly real...</p>
+
+<p>I dream of a future with you, a future where every morning I wake up to your smile, every evening I fall asleep knowing you are beside me, and every day I get to create new memories with the most wonderful person in the world...</p>
+
+<p>As I write this, I hope my words can convey even a fraction of what I feel. I want you to know that you are my everything, my reason for smiling, and my most treasured blessing...</p>
+
+<p>You are my greatest adventure, my sweetest comfort, and my truest love.I still remember the exact moment I first thought of you, how your smile lingered in my mind long after we spoke. It’s like my heart recognized you before I even did.
+
+Every time I see your name on my screen, my day lights up. It’s not just a name; it’s a feeling, a warmth, a comfort I’ve never known before.
+
+Being with you is like listening to my favorite song on repeat familiar, comforting, yet endlessly new every time.
+
+I never believed in luck until I met you. Now I understand what it means to be truly blessed, because life gave me you.
+
+Even when we are apart, I feel your presence in every little thing the songs I listen to, the places I go, the way I dream at night.
+
+Your laughter has this magic that can turn the darkest of my days into the brightest. It’s a melody I never want to forget.
+
+I have fallen for you a thousand times in a thousand different ways, and each time, it feels like the very first.
+
+The little moments we share, the quiet conversations, the silly jokes, the simple "how are you?" all of it means more than words could ever say.
+
+I don’t just love you for the way you are. I love you for the way you make me feel, the way you inspire me, and the way you make life feel so full of possibilities.
+
+I want to grow old with you, not just in years but in stories, memories, laughter, and quiet mornings where nothing else matters but us.
+
+I hope one day, when you read this, you feel the weight of my heart in every word, every sentence, every pause between the lines.
+
+Meeting you has taught me that love isn’t just a feeling it’s a promise, a patience, a choice I make every single day to be better for you and with you.
+
+You are my today, my tomorrow, and all the tomorrows I could ever dream of. I cannot wait to continue this journey with you, to hold your hand through every season of life, and to celebrate our love each day with gratitude and joy...</p>
+
+<p class="highlight">With all my love, forever and always, [Apoorav Guleria]</p>
+
+<div class="footer">Created with love for my dearest.</div>
+</div>
+
+<script>
+    // Floating hearts
+    for (let i = 0; i < 40; i++) {
+        let heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = 5 + Math.random() * 5 + 's';
+        heart.style.width = 10 + Math.random() * 30 + 'px';
+        heart.style.height = heart.style.width;
+        document.querySelector('.hearts').appendChild(heart);
+    }
+
+    // First message popup
+    window.onload = () => {
+        const popup = document.getElementById('firstMessage');
+        popup.classList.add('show');
+
+        // Auto close popup after 5 seconds
+        setTimeout(() => {
+            popup.classList.remove('show');
+            startAutoScroll();
+        }, 5000);
+    }
+
+    function closePopup() {
+        document.getElementById('firstMessage').classList.remove('show');
+        startAutoScroll();
+    }
+
+    // Typing animation
+    const paragraphs = document.querySelectorAll('#storyContainer p');
+    paragraphs.forEach((p, index) => {
+        p.style.animationDelay = (index * 1.5) + 's';
+    });
+
+    // Auto scroll story
+    function startAutoScroll() {
+        let container = document.documentElement;
+        let totalHeight = container.scrollHeight - window.innerHeight;
+        let scrollStep = totalHeight / (paragraphs.length * 3 * 60); // scroll over ~3s per paragraph
+        let scrollInterval = setInterval(() => {
+            window.scrollBy(0, scrollStep);
+            if (window.scrollY + window.innerHeight >= container.scrollHeight) {
+                clearInterval(scrollInterval);
+            }
+        }, 16);
+    }
+</script>
+
 </body>
 </html>
+
